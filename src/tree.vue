@@ -275,6 +275,10 @@
                     })
                     this.$emit("item-drop", oriNode, oriItem, draggedItem.item, e)
                 }
+            },
+            reloadAsyncData() {
+                this.$set(this.data, 0, this.initializeLoading())
+                this.handleAsyncLoad(this.data, this)
             }
         },
         created() {
@@ -282,8 +286,7 @@
         },
         mounted() {
             if (this.async) {
-                this.$set(this.data, 0, this.initializeLoading())
-                this.handleAsyncLoad(this.data, this)
+                this.reloadAsyncData()
             }
         },
         components: {
